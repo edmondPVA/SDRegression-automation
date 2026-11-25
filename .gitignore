@@ -1,0 +1,6 @@
+venv/
+reports/
+screenshots/
+test-results/
+__pycache__/
+.idea/
