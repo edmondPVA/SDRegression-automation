@@ -1,8 +1,10 @@
+import pytest
 import re
 from playwright.sync_api import Page, expect
 from pages.inventory import InventoryPage
 from pages.cart import CartPage
 
+@pytest.mark.smoke
 def test_cart_shows_added_items(logged_in_page: Page):
     inventory_page = InventoryPage(logged_in_page)
     inventory_page.add_items_to_cart(3)

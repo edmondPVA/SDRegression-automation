@@ -15,6 +15,7 @@ def test_checkout_required_fields(checkout_info_page, first, last, postal, messa
     checkout_info_page.continue_to_overview()
     expect(checkout_info_page.error).to_contain_text(message)
 
+@pytest.mark.smoke
 def test_complete_checkout(logged_in_page: Page, checkout_info_page):
     checkout_info_page.fill_info("Jane", "Tester", "1000")
     checkout_info_page.continue_to_overview()

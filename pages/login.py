@@ -7,8 +7,7 @@ class LoginPage:
         self.password = page.locator("#password")
         self.login_button = page.locator("#login-button")
         self.login_container = page.locator(".login_wrapper-inner")
-        self.login_container = page.locator(".login_wrapper-inner")
-        self.error = page.locator("[data-test='error']")  # add thisgmail
+        self.error = page.locator("[data-test='error']")
 
     def enter_account(self, first: str, second: str,):
         self.username.fill(first)

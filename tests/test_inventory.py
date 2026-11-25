@@ -2,8 +2,11 @@ from pages.inventory import InventoryPage
 from playwright.sync_api import Page, expect
 
 import re
+import pytest
+
 def test_burger_menu_links(logged_in_page: Page):
     inventory_page = InventoryPage(logged_in_page)
+    inventory_page.open_menu()
 
     expect(inventory_page.all_items_link).to_be_visible()
     expect(inventory_page.dynamic_catalog_link).to_be_visible()
@@ -15,6 +18,7 @@ def test_burger_menu_closes(logged_in_page: Page):
     inventory_page = InventoryPage(logged_in_page)
     inventory_page.open_menu()
     inventory_page.close_menu()
+    expect(inventory_page.menu).to_be_hidden()
 
 def test_sort_name_z_to_a(logged_in_page: Page):
     inv = InventoryPage(logged_in_page)
@@ -33,6 +37,7 @@ def test_sort_name_a_to_z(logged_in_page: Page):
     names = inv.get_item_names()
     assert names == sorted(names)
 
+@pytest.mark.smoke
 def test_sort_price_low_to_high(logged_in_page: Page):
     inv = InventoryPage(logged_in_page)
     before = inv.get_item_names()
